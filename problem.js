@@ -73,7 +73,56 @@ const shape = {
   console.log(shape.diameter()); // 20
   console.log(shape.perimeter()); //NaN
 
+//   7. Object Referencing
+
+let aa = {greeting:"Hello"}
+
+let bb = aa
+
+aa.greeting = "Hi"
+
+aa = {user:"aa"}
+
+console.log(bb) // {greeting:"Hello"}
+ 
+console.log(bb.greeting)  // "Hi"
+
+console.log({a:1} == {a:1}) // false
+
+// In the above statement, we are comparing two different objects so their references will be different. 
+// Hence, we get the output as false for both of the statements.
+
+function changeAgeAndReference(person) {
+    person.age = 25; // It will change the personObj1 age value
+    person = {
+      name: 'John',
+      age: 50
+    };
+// But reassignning will not the change the properties
+    return person;
+}
+
+const personObj1 = {
+    name: 'Alex',
+    age: 30
+};
+
+const personObj2 = changeAgeAndReference(personObj1);
+
+console.log(personObj1); // -> ?{ name: 'Alex', age: 25 }
+console.log(personObj2); // -> ?{ name: 'John', age: 50 }
 
 
+
+//  4 ways to clone an object 👇🏻
+
+//  all of them are different objects
+
+const obj = {a: 1 ,b: 2}
+const objclone = Object.assign({},obj);
+const objclone = JSON.parse(JSON.stringify(employee));
+const objclone = { ...obj }
+
+console.log(obj,objclone)
 
 
